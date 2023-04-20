@@ -3,6 +3,7 @@ import { LoggerService } from './logger.service';
 import { ExperimentalLoggerService } from './experimental-logger.service';
 import { LegacyLogger } from './legacy.logger';
 import { APP_CONFIG, AppConfig } from './config.token';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -28,12 +29,12 @@ import { APP_CONFIG, AppConfig } from './config.token';
     },
     {
       provide: LoggerService,
-      useFactory: (appConfig: AppConfig) => {
+      useFactory: (appConfig: AppConfig, http: HttpClient) => {
         return appConfig.experimentalEnabled
-          ? new ExperimentalLoggerService(appConfig)
+          ? new ExperimentalLoggerService(appConfig, http)
           : new LoggerService();
       },
-      deps: [APP_CONFIG],
+      deps: [APP_CONFIG, HttpClient],
       // useFactory provider is very convenient if you do not know which service to provide
       // in advance and this could be known only during the run time and this is quite often
       // happens when you need to configure provider based on the value from another service or

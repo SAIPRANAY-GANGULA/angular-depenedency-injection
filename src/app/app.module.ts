@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { LoggerService } from './logger.service';
 import { ParentDirective } from './parent.directive';
 import { ChildDirective } from './child.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, ParentDirective, ChildDirective],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
