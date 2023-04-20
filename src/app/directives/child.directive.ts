@@ -1,8 +1,8 @@
 import { Directive, Host } from '@angular/core';
-import { LoggerService } from './logger.service';
+import { LoggerService } from '../services/logger.service';
 
 @Directive({
-  selector: '[appChild]'
+  selector: '[appChild]',
 })
 export class ChildDirective {
   constructor(@Host() private loggerService: LoggerService) {

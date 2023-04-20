@@ -1,6 +1,6 @@
 import { Inject, inject, Injectable } from '@angular/core';
-import { Logger } from './logger';
-import { APP_CONFIG, AppConfig } from './config.token';
+import { Logger } from '../interfaces/logger';
+import { APP_CONFIG, AppConfig } from '../tokens/config.token';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

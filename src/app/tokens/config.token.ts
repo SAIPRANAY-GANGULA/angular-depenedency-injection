@@ -7,6 +7,6 @@ export interface AppConfig {
 export const APP_CONFIG = new InjectionToken<AppConfig>('app.config', {
   providedIn: 'root',
   factory: () => ({
-    experimentalEnabled: false,
+    experimentalEnabled: true,
   }),
 });

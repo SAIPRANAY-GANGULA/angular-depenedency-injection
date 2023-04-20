@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Logger } from './logger';
+import { Logger } from '../interfaces/logger';
 import { ExperimentalLoggerService } from './experimental-logger.service';
 
 @Injectable({
