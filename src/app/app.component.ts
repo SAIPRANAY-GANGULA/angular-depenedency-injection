@@ -1,9 +1,8 @@
-import { Component, Optional, Self, SkipSelf } from '@angular/core';
+import { Component, Injector, Optional, Self, SkipSelf } from '@angular/core';
 import { LoggerService } from './logger.service';
 import { ExperimentalLoggerService } from './experimental-logger.service';
 import { LegacyLogger } from './legacy.logger';
-import { APP_CONFIG, AppConfig } from './config.token';
-import { HttpClient } from '@angular/common/http';
+import { APP_CONFIG } from './config.token';
 
 @Component({
   selector: 'app-root',
@@ -29,12 +28,14 @@ import { HttpClient } from '@angular/common/http';
     },
     {
       provide: LoggerService,
-      useFactory: (appConfig: AppConfig, http: HttpClient) => {
-        return appConfig.experimentalEnabled
-          ? new ExperimentalLoggerService(appConfig, http)
+      useFactory: (injector: Injector) => {
+        return injector.get(APP_CONFIG).experimentalEnabled
+          ? injector.get(ExperimentalLoggerService)
           : new LoggerService();
+
+        // Instead of declaring multiple dependencies, we can use Angular Injector to take care of dependencies
       },
-      deps: [APP_CONFIG, HttpClient],
+      deps: [Injector],
       // useFactory provider is very convenient if you do not know which service to provide
       // in advance and this could be known only during the run time and this is quite often
       // happens when you need to configure provider based on the value from another service or

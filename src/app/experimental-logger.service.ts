@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ExperimentalLoggerService implements Logger {
-  private config = inject(APP_CONFIG);
+  // private config = inject(APP_CONFIG);
 
   constructor(
     @Inject(APP_CONFIG) private appConfig: AppConfig,
