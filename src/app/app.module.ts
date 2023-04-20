@@ -11,7 +11,7 @@ import { ChildDirective } from './child.directive';
   declarations: [AppComponent, ParentDirective, ChildDirective],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(@Self() private loggerService: LoggerService) {

@@ -34,7 +34,7 @@ const injector = new Injector([UserService]);
 // In angular, this happens when we use __providers__ property in NgModule or Directive or Component
 // Also, when use __providedIn__ property in @Injectable() Decorator.
 
-//When Angular create a Component it does something like below:
+//When Angular creates a Component it does something like below:
 const component = new Component(injector.get(UserService));
 
 component.userService.sayHi();
