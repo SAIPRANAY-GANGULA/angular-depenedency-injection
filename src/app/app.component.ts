@@ -3,6 +3,8 @@ import { LoggerService } from './services/logger.service';
 import { ExperimentalLoggerService } from './services/experimental-logger.service';
 import { LegacyLogger } from './services/legacy.logger';
 import { APP_CONFIG } from './tokens/config.token';
+import { GalleryLoggerService } from './services/gallery-logger.service';
+import { SlideLoggerService } from './services/slide-logger.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,11 @@ import { APP_CONFIG } from './tokens/config.token';
     <div appParent>
       <div appChild></div>
     </div>
+
+    <app-gallery>
+      <app-gallery-slide></app-gallery-slide>
+      <app-gallery-slide></app-gallery-slide>
+    </app-gallery>
   `,
   providers: [
     {
@@ -47,6 +54,11 @@ import { APP_CONFIG } from './tokens/config.token';
       // in advance and this could be known only during the run time and this is quite often
       // happens when you need to configure provider based on the value from another service or
       // dependency injection token
+    },
+
+    {
+      provide: GalleryLoggerService,
+      useExisting: SlideLoggerService,
     },
   ],
 })

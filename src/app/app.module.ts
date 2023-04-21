@@ -10,9 +10,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { REPORTERS } from './tokens/reporter.token';
 import { BrowserReporterService } from './services/browser-reporter.service';
 import { EngagingReporterService } from './services/engaging-reporter.service';
+import { GallerySlideComponent } from './components/gallery-slide.component';
+import { GalleryComponent } from './components/gallery.component';
 
 @NgModule({
-  declarations: [AppComponent, ParentDirective, ChildDirective],
+  declarations: [
+    AppComponent,
+    ParentDirective,
+    ChildDirective,
+    GallerySlideComponent,
+    GalleryComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
     {
